@@ -9,7 +9,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config("DJANGO_SECRET_KEY", default="dev-insecure-key-change-me")
 DEBUG = config("DJANGO_DEBUG", default=True, cast=bool)
-ALLOWED_HOSTS = config("DJANGO_ALLOWED_HOSTS", default="localhost,127.0.0.1,34.239.101.23,adapted-nor-unlike-photographs.trycloudflare.com", cast=Csv())
+ALLOWED_HOSTS = config("DJANGO_ALLOWED_HOSTS", default="localhost,127.0.0.1,34.239.101.23,adapted-nor-unlike-photographs.trycloudflare.com", cast=Csv())\
+
+# ---- CSRF ----
+CSRF_TRUSTED_ORIGINS = [
+    "https://adapted-nor-unlike-photographs.trycloudflare.com",
+    "https://complete-harrell-orthodontics-front.vercel.app",
+]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
