@@ -118,11 +118,13 @@ SIMPLE_JWT = {
 }
 
 # ---- CORS ----
-CORS_ALLOWED_ORIGINS = config(
-    "CORS_ALLOWED_ORIGINS",
-    default="http://localhost:5173",
-    cast=Csv(),
-)
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "https://complete-harrell-orthodontics-front.vercel.app",
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
 
 # ---- Site-specific config (kept out of code where it might change often) ----
 SITE_CONTACT_EMAIL = config("SITE_CONTACT_EMAIL", default="contact@drharrell.com")
