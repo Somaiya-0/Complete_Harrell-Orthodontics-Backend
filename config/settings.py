@@ -9,12 +9,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config("DJANGO_SECRET_KEY", default="dev-insecure-key-change-me")
 DEBUG = config("DJANGO_DEBUG", default=True, cast=bool)
-ALLOWED_HOSTS = config("DJANGO_ALLOWED_HOSTS", default="localhost,127.0.0.1,34.239.101.23,adapted-nor-unlike-photographs.trycloudflare.com", cast=Csv())\
+ALLOWED_HOSTS = config("DJANGO_ALLOWED_HOSTS", default="localhost,127.0.0.1,34.239.101.23,.trycloudflare.com", cast=Csv())
 
 # ---- CSRF ----
 CSRF_TRUSTED_ORIGINS = [
-    "https://adapted-nor-unlike-photographs.trycloudflare.com",
-    "https://complete-harrell-orthodontics-front.vercel.app",
+    "https://*.trycloudflare.com",
 ]
 
 INSTALLED_APPS = [
@@ -127,6 +126,11 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "https://complete-harrell-orthodontics-front.vercel.app",
+]
+
+# Allow any trycloudflare.com preview URL (subdomain changes every tunnel restart)
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://.*\.trycloudflare\.com$",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
